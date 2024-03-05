@@ -1,3 +1,5 @@
+clear all
+close all
 %Parameters
 filename = 'video.avi';
 framenum = 0;
@@ -56,10 +58,10 @@ while hasFrame(v)
     title('y-t diagram')
 
     subplot(2, 2, [2 4])
-    imshow(bw);
+    imshow(frame);
 
     hold on
-    text(p_x(framenum), p_y(framenum),num2str(Area), 'Color', 'blue');
+    text(p_x(framenum), p_y(framenum),num2str(Area), 'Color', 'red','FontSize',20);
     plot(p_x, p_y, 'Color','yellow', 'LineWidth',3);
     hold off
     drawnow;
