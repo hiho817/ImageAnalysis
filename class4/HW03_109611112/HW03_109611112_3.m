@@ -3,7 +3,7 @@ clear all
 
 % parameters
 videofilename = 'RBC20240304.wmv';
-outfilename = 'HW03_109611112_3.mp4'
+outfilename = 'HW03_109611112_3.mp4';
 bg_suffix = '_bg';
 bg_ext = '.bmp';
 n = 0; % frame counter
