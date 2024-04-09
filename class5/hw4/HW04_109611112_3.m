@@ -32,7 +32,7 @@ while hasFrame(v)
     
 
     [centers, radii, metric] = imfindcircles(nobg,radii_range,Sensitivity = 0.9,EdgeThreshold=0.005);
-    imshow(I);
+    imshow(nobg);
     hold on
     viscircles(centers, radii, 'EdgeColor', 'y');
     hold off

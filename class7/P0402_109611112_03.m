@@ -1,5 +1,4 @@
 close all
-clear all
 
 %parameter
 videofilename = 'bouncing_ball.mp4';

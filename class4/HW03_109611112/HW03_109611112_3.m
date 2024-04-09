@@ -46,22 +46,23 @@ while hasFrame(v)
         % object matching
     if n == 1
         for m = 1:numel(state)
-            [CellData cell_count] = Add_cell(state, m, n, CellData, cell_count);
+            [CellData, cell_count] = Add_cell(state, m, n, CellData, cell_count);
             state(m).cellnum = cell_count;
         end
     else
         for m = 1:numel(state)
             distance = 0;
+            %calculate distance between the current cell and others
             for checkn = 1:cell_count
                 distance(checkn) = caldist(state, m, CellData, checkn);
             end
-            [value id] = min(distance); 
+            [value, id] = min(distance); 
             if value <= maxmovedist
                 CellData = Update_cell(state, m, n, CellData, id);
-                CellData(id).trajectory = CellData(id).trajectory + value
+                CellData(id).trajectory = CellData(id).trajectory + value;
                 state(m).cellnum = id;
             else
-                [CellData cell_count] = Add_cell(state, m, n, CellData, cell_count);
+                [CellData, cell_count] = Add_cell(state, m, n, CellData, cell_count);
             end
         end
     end
@@ -110,7 +111,7 @@ function [CellData, cell_count] = Add_cell(state, m, n, CellData, cell_count)
     CellData(cell_count).Area = state(m).Area;
     CellData(cell_count).Centroid = state(m).Centroid;
     CellData(cell_count).FrameN = n;
-    CellData(cell_count).trajectory=0
+    CellData(cell_count).trajectory=0;
 end
 
 function CellData = Update_cell(state, m, n, CellData, id)
